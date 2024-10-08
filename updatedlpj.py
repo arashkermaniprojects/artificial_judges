@@ -91,7 +91,13 @@ def main(args):
                 "assessment": assessment
             }
             results.append(result)
-            
+
+            try: 
+                if i % 100 == 0:
+                    with open(args.output_path+str(i), "w", encoding='utf-8') as out:
+                       json.dump(results, out, ensure_ascii=False, indent=2)
+            except:
+               pass
             # Update the progress bar
             pbar.update(1)
     
